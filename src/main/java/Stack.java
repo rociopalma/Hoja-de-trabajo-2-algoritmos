@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Esta clase es la interfaz la cual tiene declarados los métodos y funciones del programa,no tiene el proceso de los mismos
+Github: 
  */
 
 /**

@@ -2,9 +2,8 @@
 import java.util.Vector;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Esta Clase contiene al vector y las funciones que tendrá el programa. 
+Github: 
  */
 
 /**
@@ -46,13 +45,7 @@ public class Pila<E> implements Stack {
 
     @Override
     public String toString() {
-        /*String p = "{";
-        int i = 0;
-        while(i<vector.size()){
-            
-           p += vector.get(i-vector.size())+", ";
-        }
-        return p+"}";*/
+        
         return vector.toString();
     }
     
