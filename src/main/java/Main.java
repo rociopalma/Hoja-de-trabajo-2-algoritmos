@@ -7,7 +7,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 /*
  * Esta clase contiene El método main y dos métodos para el funcionamiento del programa. Lectura hace la lectura del txt
  y Init tiene ya los datos de txt y los opera y muestra los resultados
-Github: 
+Github: https://github.com/rociopalma/Hoja-de-trabajo-2-algoritmos
  */
 /**
  *
@@ -28,27 +28,52 @@ public class Main {
     }
 
     public void lectura() {
+        
         try {
 
             File myObj = new File("datos.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
+                data = data.trim();
+                data.replace("^\\s*" , "");
                 //System.out.println(data);
-                String CadenaDatos[] = data.split(" ");
-                for (int i = 0; i < CadenaDatos.length; i++) {
-                    System.out.println("Cadena: " + CadenaDatos[i]);
-                    ClasePila.push(CadenaDatos[i]);
-                }//fin de for
+                if (! data.isEmpty()){
+                  
+                //procesaCadena(data);
+                String expresion = "(1 +2 )* 4 + 3 ";
+                infixPostfix(expresion);
+                }//fin de if
+                
             }//fin de while
             myReader.close();
-            Init();
+            //Init();
         } catch (FileNotFoundException e) {
             System.out.println("No se encontró el archivo.");
             e.printStackTrace();
         }
     }//fin de metodo
 
+    public void infixPostfix(String cadena){
+    String postfix = "";
+    InfixToPostFix clase = new InfixToPostFix();
+    
+    postfix = clase.infixToPostFix(cadena);
+    System.out.print(postfix);    
+    procesaCadena(postfix);
+    }
+    
+    public void procesaCadena(String cadena){
+        String CadenaDatos[] = cadena.split(" ");
+                for (int i = 0; i < CadenaDatos.length; i++) {
+                    //System.out.println("Cadena: " + CadenaDatos[i]);
+                    ClasePila.push(CadenaDatos[i]);
+                    
+                }//fin de for
+                Init();  
+    }
+    
+    
     public void Init() {
 
         System.out.println("Tamaño de vector: " + ClasePila.size());

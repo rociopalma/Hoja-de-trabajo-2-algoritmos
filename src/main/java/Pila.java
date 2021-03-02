@@ -3,7 +3,7 @@ import java.util.Vector;
 
 /*
  * Esta Clase contiene al vector y las funciones que tendrá el programa. 
-Github: 
+Github: https://github.com/rociopalma/Hoja-de-trabajo-2-algoritmos
  */
 
 /**
