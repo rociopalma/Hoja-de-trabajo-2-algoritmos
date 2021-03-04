@@ -15,7 +15,7 @@ Github: https://github.com/rociopalma/Hoja-de-trabajo-2-algoritmos
  */
 public class Main {
 
-    Pila ClasePila = new Pila();
+    Pila ClasePila;
 
     /**
      * @param args the command line arguments
@@ -23,28 +23,32 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         (new Main()).lectura();
-       
 
     }
 
+    
+    
+    
     public void lectura() {
-        
-        try {
 
+        try {
+            ClasePila = new Pila(3);
             File myObj = new File("datos.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 data = data.trim();
-                data.replace("^\\s*" , "");
+                data.replace("^\\s*", "");
                 //System.out.println(data);
-                if (! data.isEmpty()){
-                  
-                //procesaCadena(data);
-                String expresion = "(1 +2 )* 4 + 3 ";
-                infixPostfix(expresion);
+                if (!data.isEmpty()) {
+
+                    //procesaCadena(data);
+                    String expresion = "(1+2)*9";
+
+                    //String expresion = "(1 +2 )* 4 + 3 ";
+                    infixPostfix(expresion);
                 }//fin de if
-                
+
             }//fin de while
             myReader.close();
             //Init();
@@ -54,26 +58,28 @@ public class Main {
         }
     }//fin de metodo
 
-    public void infixPostfix(String cadena){
-    String postfix = "";
-    InfixToPostFix clase = new InfixToPostFix();
-    
-    postfix = clase.infixToPostFix(cadena);
-    System.out.print(postfix);    
-    procesaCadena(postfix);
+    public void infixPostfix(String cadena) {
+        String postfix = "";
+        InfixToPostFix clase = new InfixToPostFix();
+
+        postfix = clase.infixToPostFix(cadena);
+        System.out.print(postfix);
+        procesaCadena(postfix);
     }
-    
-    public void procesaCadena(String cadena){
-        String CadenaDatos[] = cadena.split(" ");
-                for (int i = 0; i < CadenaDatos.length; i++) {
-                    //System.out.println("Cadena: " + CadenaDatos[i]);
-                    ClasePila.push(CadenaDatos[i]);
-                    
-                }//fin de for
-                Init();  
+
+    public void procesaCadena(String cadena) {
+        cadena = cadena.trim();
+        cadena.replace("^\\s*", "");
+        
+        for (int i = 0; i < cadena.length(); i++) {
+            //System.out.println("Cadena: " + CadenaDatos[i]);
+            
+            ClasePila.push(String.valueOf(cadena.charAt(i)));
+
+        }//fin de for
+        Init();
     }
-    
-    
+
     public void Init() {
 
         System.out.println("Tamaño de vector: " + ClasePila.size());
@@ -102,7 +108,7 @@ public class Main {
                     ClasePila.pop();
                     break;
                 case "/":
-                    System.out.println("Vamos a Dividir "+ Aux1 + " / " + Aux2);
+                    System.out.println("Vamos a Dividir " + Aux1 + " / " + Aux2);
                     Aux1 = Aux1 / Aux2;
                     System.out.println("Resultado: " + Aux1);
                     ClasePila.pop();
