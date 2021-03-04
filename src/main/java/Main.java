@@ -16,23 +16,33 @@ Github: https://github.com/rociopalma/Hoja-de-trabajo-2-algoritmos
 public class Main {
 
     Pila ClasePila;
-
+    Scanner leer = new Scanner(System.in);
+    int opcion = 1;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         (new Main()).lectura();
-
+        
     }
 
     
+    public void menu(){
+        
+        System.out.println("**********Bienvenido*************");
+        System.out.println("Por favor elija una de las siguientes opciones para la implementación del stack");
+        System.out.println("1. Vector");
+        System.out.println("2. ArrayList");
+        System.out.println("3. List");
+        opcion = leer.nextInt();
     
+    }
     
     public void lectura() {
-
+        menu();
         try {
-            ClasePila = new Pila(3);
+            ClasePila = new Pila(opcion);
             File myObj = new File("datos.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
@@ -41,12 +51,7 @@ public class Main {
                 data.replace("^\\s*", "");
                 //System.out.println(data);
                 if (!data.isEmpty()) {
-
-                    //procesaCadena(data);
-                    String expresion = "(1+2)*9";
-
-                    //String expresion = "(1 +2 )* 4 + 3 ";
-                    infixPostfix(expresion);
+                    infixPostfix(data);
                 }//fin de if
 
             }//fin de while
@@ -61,9 +66,9 @@ public class Main {
     public void infixPostfix(String cadena) {
         String postfix = "";
         InfixToPostFix clase = new InfixToPostFix();
-
+        System.out.println("Lectura capturada "+ cadena);
         postfix = clase.infixToPostFix(cadena);
-        System.out.print(postfix);
+        System.out.println("Lectura convertida "+postfix);
         procesaCadena(postfix);
     }
 
@@ -82,7 +87,8 @@ public class Main {
 
     public void Init() {
 
-        System.out.println("Tamaño de vector: " + ClasePila.size());
+        System.out.println("Tamaño: " + ClasePila.size());
+        System.out.println("cadena a procesar: " + ClasePila.toString());
 
         int tamPila = ClasePila.size();
         int Aux1 = 0, Aux2 = 0;
@@ -90,31 +96,31 @@ public class Main {
             String operacion = (String) ClasePila.peek();
             switch (operacion) {
                 case "+":
-                    System.out.println("Vamos a Sumar " + Aux1 + " + " + Aux2);
+                    //System.out.println("Vamos a Sumar " + Aux1 + " + " + Aux2);
                     Aux1 = Aux1 + Aux2;
-                    System.out.println("Resultado: " + Aux1);
+                    //System.out.println("Resultado: " + Aux1);
                     ClasePila.pop();
                     break;
                 case "-":
-                    System.out.println("Vamos a Restar " + Aux1 + " - " + Aux2);
+                    //System.out.println("Vamos a Restar " + Aux1 + " - " + Aux2);
                     Aux1 = Aux1 - Aux2;
-                    System.out.println("Resultado: " + Aux1);
+                    //System.out.println("Resultado: " + Aux1);
                     ClasePila.pop();
                     break;
                 case "*":
-                    System.out.println("Vamos a Multiplicar " + Aux1 + " * " + Aux2);
+                    //System.out.println("Vamos a Multiplicar " + Aux1 + " * " + Aux2);
                     Aux1 = Aux1 * Aux2;
-                    System.out.println("Resultado: " + Aux1);
+                    //System.out.println("Resultado: " + Aux1);
                     ClasePila.pop();
                     break;
                 case "/":
-                    System.out.println("Vamos a Dividir " + Aux1 + " / " + Aux2);
+                    //System.out.println("Vamos a Dividir " + Aux1 + " / " + Aux2);
                     Aux1 = Aux1 / Aux2;
-                    System.out.println("Resultado: " + Aux1);
+                    //System.out.println("Resultado: " + Aux1);
                     ClasePila.pop();
                     break;
                 default:
-                    System.out.println(ClasePila.peek());
+                    //System.out.println(ClasePila.peek());
                     if (Aux1 == 0) {
                         //Utilizo primero el Cast de String y luego Transformo el valor String a Numerico  
                         Aux1 = Integer.valueOf((String) ClasePila.pop());
@@ -125,6 +131,7 @@ public class Main {
                     break;
             }//fin de swithc
         }//fin de for
+        System.out.println("Resultado: " + Aux1);
     }//fin del metodo
 
 }//fin de clase

@@ -44,8 +44,12 @@ public class Pila<E> implements Stack {
                 nuevo.sig = null;
                 raiz = nuevo;
             } else {
-                nuevo.sig = raiz;
-                raiz = nuevo;
+                Nodo aux = raiz;
+                while(aux.sig != null){
+                    aux = aux.sig;
+                }
+                aux.sig = nuevo;
+                
             }
 
         }
