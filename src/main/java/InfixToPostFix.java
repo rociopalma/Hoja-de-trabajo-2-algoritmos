@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Esta clase cambia la expresión infix a un posfix
+ *Github: https://github.com/rociopalma/Hoja-de-trabajo-2-algoritmos
  */
 
 
@@ -13,6 +12,9 @@ import java.util.Stack;
  */
 public class InfixToPostFix {
 
+ /*
+ * @param c 
+ */
     private static int precedence(char c) {
         switch (c) {
             case '+':
@@ -26,7 +28,12 @@ public class InfixToPostFix {
         }
         return -1;
     }
-
+    
+ /*
+ * Esta funcion lee cada elemento de la expresión y lo ordena como posfix
+ * @param expression es la expresión infix que se convierte a posfix 
+   @return result devuelve la expresión ya convertida
+ */
     public static String infixToPostFix(String expression) {
         String result = "";
         Stack<Character> stack = new Stack<>();

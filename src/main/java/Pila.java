@@ -3,11 +3,10 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 /*
- * Esta Clase contiene al vector y las funciones que tendrá el programa. 
+ * Esta Clase contiene las funciones del vector, list y el arrayList 
 Github: https://github.com/rociopalma/Hoja-de-trabajo-2-algoritmos
  */
 /**
- *
  * @author Rocío
  */
 public class Pila<E> implements Stack {
@@ -30,6 +29,11 @@ public class Pila<E> implements Stack {
 
     @Override
 
+ /*
+ *  Este método agrega elementos a la implementación del stack seleccionada
+ * @param item elemento que se agrega al stack
+ */
+    
     public void push(Object item) {
 
         if (tipoPila == 1) {
@@ -56,6 +60,10 @@ public class Pila<E> implements Stack {
     }
 
     @Override
+ /*
+ * Esta función remueve el último elemento agregado a la implementación del stack seleccionada
+ * @return p devuelve el elemento removido
+ */
     public Object pop() {
         Object p = new Object();
         if (tipoPila == 1) {
@@ -75,6 +83,10 @@ public class Pila<E> implements Stack {
     }
 
     @Override
+ /*
+ *  Esta función toma el último elemento agregado de la implementación del stack seleccionada
+ * @return p devuelve el último elemento que se agrega al stack
+ */
     public Object peek() {
         Object p = new Object();
         if (tipoPila == 1) {
@@ -87,6 +99,10 @@ public class Pila<E> implements Stack {
         return p;
     }
 
+ /*
+ *  Esta función revisa si la implementación del stack seleccionada está vacia o no
+ * @return vacio retorna true si está vacio y false si no
+ */
     @Override
     public boolean empty() {
         boolean vacio = false;
@@ -104,6 +120,10 @@ public class Pila<E> implements Stack {
     }
 
     @Override
+ /*
+ *  Esta función indica el tamaño de implementación del stack seleccionada
+ * @return tamanio retorna el tamaño del stack
+ */
     public int size() {
         int tamanio = 0;
         if (tipoPila == 1) {
@@ -122,6 +142,11 @@ public class Pila<E> implements Stack {
 }
 
 @Override
+
+/*
+ *  Esta función devuelve lo que tiene la implementación del stack seleccionada
+ * @return cadena devuelve lo que el stack contiene 
+ */
 public String toString() {
         String cadena = "";
         if (tipoPila == 1) {
